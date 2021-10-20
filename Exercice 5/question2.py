@@ -26,7 +26,7 @@ compact_matrix = [
 ]
 
 # TODO revoir algo en utilisant le tableau et non la matrice
-def get(i, j):
+def get_with_math_only(i, j):
     global compact_matrix
     tab_length = len(compact_matrix)
     n = int((tab_length + 6) / 5)
@@ -41,6 +41,20 @@ def get(i, j):
 
         else:
             return " "
+
+
+def get(i, j):
+    global compact_matrix
+    tab_length = len(compact_matrix)
+    n = int((tab_length + 6) / 5)
+    if j in [0, math.floor(n / 2), n - 1]:
+        return compact_matrix[((n - 1) * (j // math.floor(n / 2))) + i]
+    else:
+        # TODO Ça ne marche pas
+        if i == 0:
+            return compact_matrix[((n - 1) * 3) + j - 3]
+        elif i == n - 1:
+            return compact_matrix[((n - 1) * 3) + (n - 3) + j - 3]
 
 
 n = 5

@@ -21,8 +21,8 @@ compact_matrix = [
     "X",
     "X",
     " ",
-    "X",
     " ",
+    "X",
 ]
 
 # TODO revoir algo en utilisant le tableau et non la matrice
@@ -48,13 +48,14 @@ def get(i, j):
     tab_length = len(compact_matrix)
     n = int((tab_length + 6) / 5)
     if j in [0, math.floor(n / 2), n - 1]:
-        return compact_matrix[((n - 1) * (j // math.floor(n / 2))) + i]
+        return compact_matrix[(n * (j // math.floor(n / 2))) + i]
     else:
-        # TODO Ça ne marche pas
         if i == 0:
-            return compact_matrix[((n - 1) * 3) + j - 3]
+            return compact_matrix[(n * 3) + j - (j // math.floor(n / 2)) - 1]
         elif i == n - 1:
-            return compact_matrix[((n - 1) * 3) + (n - 3) + j - 3]
+            return compact_matrix[(n * 3) + (n - 3) + j - (j // math.floor(n / 2)) - 1]
+
+    return " "
 
 
 n = 5
